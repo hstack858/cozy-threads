@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    env:
+      PORT: 8080
+      PUBLISHABLE_KEY: ${{ secrets.PUBLISHABLE_KEY }}
+      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      NODE_ENV: development
+      NEXT_PUBLIC_API_URL: http://localhost:8080
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate apps/server/.env
+        run: |
+          echo "PORT=8080" >> apps/server/.env
+          echo "PUBLISHABLE_KEY=${{ secrets.PUBLISHABLE_KEY }}" >> apps/server/.env
+          echo "SECRET_KEY=${{ secrets.SECRET_KEY }}" >> apps/server/.env
+          echo "NODE_ENV=development" >> apps/server/.env
+
+      - name: Generate apps/client/.env
+        run: |
+          echo "NEXT_PUBLIC_API_URL=http://localhost:8080" >> apps/client/.env
+
+      - name: Lint Client and Server
+        run: |
+          npm run lint
+
+      - name: Run Prettier on Client
+        run: npx prettier --check "apps/client/**/*.{ts,tsx,js,jsx,json,css,md}"
+
+      - name: Type Check Client and Server
+        run: |
+          npx tsc --build apps/client
+          npx tsc --build apps/server
+
+      - name: Run Server Tests
+        run: npm test --workspace=apps/server
+
+      - name: Run E2E Tests
+        run: npm run test:e2e

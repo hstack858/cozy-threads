@@ -13,7 +13,6 @@ const Checkout: React.FC = () => {
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
-    console.log(totalAmount);
     if (totalAmount > 0) {
       fetch(`${API_URL}/create-payment-intent`, {
         method: 'POST',

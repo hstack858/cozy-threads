@@ -1,26 +1,42 @@
 # Node
 node_modules/
+npm-debug.log*
+.pnpm-debug.log*
+
+# Logs
+logs
+*.log
+*.log.*
+
+# Build
 dist/
+.next/
+out/
+coverage/
+build/
+
+# Env
 .env
 .env.local
-*.log
+.env.*.local
 
-# TypeScript
-*.tsbuildinfo
+# System
+.DS_Store
+Thumbs.db
 
 # VSCode
 .vscode/
 
-# Jest coverage
-coverage/
-
-# Playwright
+# Playwright / Jest
 test-results/
 playwright-report/
+jest-stare/
+*.lcov
 
-# Mac/Linux/Windows
-.DS_Store
-Thumbs.db
+# TypeScript
+*.tsbuildinfo
 
-*.js
-*.map
+# IDEs
+.idea/
+*.sublime-project
+*.sublime-workspace

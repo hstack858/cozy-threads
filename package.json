@@ -18,6 +18,10 @@
     "dev:all": "concurrently \"npm run dev:client\" \"npm run dev:server\""
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.13.14",
     "@typescript-eslint/eslint-plugin": "^8.28.0",
     "@typescript-eslint/parser": "^8.28.0",
     "concurrently": "^9.1.2",

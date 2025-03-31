@@ -69,7 +69,7 @@ jobs:
         run: npm run start --workspace=apps/server &
 
       - name: Wait for server to be ready
-        run: npx wait-on http://localhost:8080
+        run: wait-on http://localhost:8080/key
 
       - name: Run E2E Tests
         run: npm run test:e2e

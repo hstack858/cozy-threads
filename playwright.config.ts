@@ -10,8 +10,9 @@ export default defineConfig({
     video: 'retain-on-failure',
   },
   webServer: {
-    command: 'npm run dev:all',
+    command: 'npm run start --workspace=apps/client',
     port: 3000,
+    timeout: 60 * 1000,
     reuseExistingServer: !process.env.CI,
   },
 });

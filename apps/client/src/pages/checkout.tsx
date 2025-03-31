@@ -30,7 +30,7 @@ const Checkout: React.FC = () => {
         window.location.href = '/failure';
       }
     }
-  }, [API_URL, totalAmount, stripePromise, clientSecret]);
+  }, [API_URL, totalAmount]);
 
   const appearance: Appearance = {
     theme: 'flat',

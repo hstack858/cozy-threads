@@ -10,6 +10,11 @@
   color: var(--dark-brown);
 }
 
+.navLink.ABOUT,
+.navLink.CONTACT {
+  cursor: not-allowed;
+}
+
 .cartButton {
   position: relative;
   font-size: 2.5rem;

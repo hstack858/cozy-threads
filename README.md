@@ -16,7 +16,7 @@ git@github.com:hstack858/cozy-threads.git
 npm install
 ```
 
-3. Create a stripe account and get your publishable and secret APO keys
+3. Create a stripe account and get your publishable and secret API keys
 
 4. Create a `.env` file in both the `apps/client` and `apps/server` directories. There is a `.env.example` in both.
 

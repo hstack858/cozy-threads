@@ -1,0 +1,16 @@
+.payNow {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--light-brown);
+  border: none;
+  border-radius: 1rem;
+  font-size: 1.25rem;
+  color: white;
+  font-weight: bold;
+  font-family: Montserrat, sans-serif;
+  cursor: pointer;
+}
+
+.payNow:hover {
+  background-color: black;
+}

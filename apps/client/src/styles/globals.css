@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@700&display=swap');
+
+:root {
+  --dark-brown: #4b2a1e;
+  --light-brown: #5a260b;
+  --beige: #f5e6d0;
+}
+
+html,
+body {
+  background-color: #f5e6d0;
+}

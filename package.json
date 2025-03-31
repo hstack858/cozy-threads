@@ -1,0 +1,36 @@
+{
+  "name": "ecommerce-monorepo",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/client",
+    "apps/server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w apps/client\" \"npm run dev -w apps/server\"",
+    "test": "npm run test:server && npm run test:e2e",
+    "test:server": "npm run build -w apps/server && jest -w apps/server",
+    "test:e2e": "npx playwright test",
+    "lint": "eslint . --ext .ts,.tsx --ignore-path .eslintignore",
+    "format": "prettier --write .",
+    "dev:client": "npm run dev --workspace=client",
+    "dev:server": "npm run start --workspace=server",
+    "dev:all": "concurrently \"npm run dev:client\" \"npm run dev:server\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.28.0",
+    "@typescript-eslint/parser": "^8.28.0",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.23.0",
+    "eslint-config-prettier": "^10.1.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "prettier": "^3.5.3"
+  },
+  "dependencies": {
+    "@playwright/test": "^1.51.1",
+    "eslint-import-resolver-typescript": "^4.3.1"
+  }
+}

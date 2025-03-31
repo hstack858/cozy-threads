@@ -1,0 +1,3 @@
+node_modules/
+apps/server/dist/
+apps/client/next.config.js

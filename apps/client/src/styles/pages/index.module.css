@@ -1,0 +1,20 @@
+.shopNowButton {
+  background-color: var(--dark-brown);
+  color: white;
+  border: none;
+  font-size: 1.66rem;
+  border-radius: 0.4rem;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+  width: 12rem;
+  height: 3.5rem;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 0.2rem;
+}
+
+.shopNowButton:hover {
+  background-color: #251210;
+}

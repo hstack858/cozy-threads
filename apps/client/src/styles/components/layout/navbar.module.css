@@ -1,0 +1,47 @@
+.navLogoText {
+  margin-left: 0.5rem;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 0.1rem;
+  color: var(--dark-brown);
+}
+
+.cartButton {
+  position: relative;
+  font-size: 2.5rem;
+  color: var(--dark-brown);
+  margin-right: 3rem;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .navLink {
+    display: none;
+  }
+
+  .navLink.SHOP {
+    display: inline;
+  }
+}
+
+@media (max-width: 620px) {
+  .navLogoText {
+    display: none;
+  }
+
+  .cartButton {
+    margin-right: 0;
+  }
+
+  .navLink.SHOP {
+    display: inline;
+    margin-left: 2rem;
+  }
+}

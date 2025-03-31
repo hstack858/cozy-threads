@@ -26,7 +26,7 @@ const Checkout: React.FC = () => {
         })
           .then(response => response.json())
           .then(({ clientSecret }) => setClientSecret(clientSecret));
-      } catch (e) {
+      } catch {
         window.location.href = '/failure';
       }
     }

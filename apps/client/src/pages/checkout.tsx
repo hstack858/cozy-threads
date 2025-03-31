@@ -8,30 +8,29 @@ import { useStripeContext } from '@/contexts/StripeContext';
 
 const Checkout: React.FC = () => {
   const [clientSecret, setClientSecret] = useState<string>('');
-  const { totalAmount, clearCart } = useCart();
+  const { totalAmount } = useCart();
   const { stripePromise } = useStripeContext();
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
   useEffect(() => {
     if (totalAmount > 0) {
-      if (!stripePromise || !clientSecret) {
-        clearCart();
-        window.location.href = '/';
+      try {
+        fetch(`${API_URL}/create-payment-intent`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            amount: totalAmount * 100,
+          }),
+        })
+          .then(response => response.json())
+          .then(({ clientSecret }) => setClientSecret(clientSecret));
+      } catch (e) {
+        window.location.href = '/failure';
       }
-
-      fetch(`${API_URL}/create-payment-intent`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          amount: totalAmount * 100,
-        }),
-      })
-        .then(response => response.json())
-        .then(({ clientSecret }) => setClientSecret(clientSecret));
     }
-  }, [API_URL, totalAmount]);
+  }, [API_URL, totalAmount, stripePromise, clientSecret]);
 
   const appearance: Appearance = {
     theme: 'flat',
